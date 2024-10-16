@@ -62,16 +62,7 @@ function Header() {
     </header>
   );
 }
-function Menu() {
-  return (
-    <main className="menu">
-      <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-    </main>
-  );
-}
+
 function Footer() {
   const OpenHour = 8;
   const ClosedHour = 22;
@@ -83,16 +74,37 @@ function Footer() {
     <footer>{new Date().toLocaleTimeString()}. We're Currently Open!</footer>
   );
 }
-function Pizza() {
+function Pizza(props) {
   return (
-    <div>
-      <img src="pizzas/spinaci.jpg" alt="Spinaci pizza"></img>
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
+    <div className="pizza">
+      <img src={props.Image} alt={props.name}></img>
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.Ingredients}</p>
+        <span>{props.Price}</span>
+      </div>
     </div>
   );
 }
-
+function Menu() {
+  return (
+    <main className="menu">
+      <h2>Our Menu</h2>
+      <Pizza
+        name="Pizza Spinaci"
+        Image="pizzas/spinaci.jpg"
+        Ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+        Price={15}
+      />
+      <Pizza
+        name="Pizza Funghi"
+        Image="pizzas/funghi.jpg"
+        Ingredients="Tomato, mushrooms"
+        Price={12}
+      />
+    </main>
+  );
+}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
